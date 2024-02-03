@@ -4,6 +4,10 @@ import langchain
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 embeddings = OpenAIEmbeddings()
 
 client = OpenAI(api_key=st.secrets.get("OPENAI_API_KEY"))

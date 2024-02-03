@@ -8,7 +8,7 @@ __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
-
+hashed_passwords = stauth.Hasher(['au1234', 'au12345']).generate()
 with open (Path(__file__).parent/"config.yaml") as file:
     config = yaml.load(file, Loader=SafeLoader)
 authenticator = stauth.Authenticate(
